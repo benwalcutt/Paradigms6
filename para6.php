@@ -8,21 +8,22 @@ session_start();
 <body>
 
 <form action="<?php print($_SERVER['SCRIPT_NAME'])?>" method="get">
-<input type="text" value="" name="input_text">
-<input type="submit" value="Submit" name="submitter">
+	<input type="text" value="" name="input_text">
+	<input type="submit" value="Submit" name="submitter">
 
 </form>
 <form>
-<input type="submit" value="Save" name="saver" formaction=<?php 
-$fh = fopen("entries.json", 'w');
-if($fh === false)
-	die("Failed to open entries.json for writing.");
-else
-{
-	fwrite($fh, json_encode($entries));
-	fclose($fh);
-} ?>
+	<input type="button" value="Save" name="saver" onclick=<?php 
+	$fh = fopen("entries.json", 'w');
+	if($fh === false)
+		die("Failed to open entries.json for writing.");
+	else
+	{
+		fwrite($fh, json_encode($entries));
+		fclose($fh);
+	} ?>
 >
+
 </form>
 <br>
 <?php
